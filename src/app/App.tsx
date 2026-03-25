@@ -68,7 +68,7 @@ export default function App() {
         fontFamily: 'Manrope, sans-serif'
       }}
     >
-      <div className="max-w-[1600px] mx-auto">
+      <div className={`${splitView ? 'max-w-[1180px]' : 'max-w-[1600px]'} mx-auto`}>
         {/* Header */}
         <div className="mb-8 text-center">
           <h1 
@@ -144,12 +144,12 @@ export default function App() {
             </div>
           )}
           {donutOnly && (
-            <div className="max-w-[1200px] mx-auto">
+            <div className="max-w-[980px] mx-auto">
               <DonutChart data={certificationData} progress={progress} />
             </div>
           )}
           {barsOnly && (
-            <div className="max-w-[1200px] mx-auto">
+            <div className="max-w-[980px] mx-auto">
               <HorizontalBarChart data={certificationData} progress={progress} />
             </div>
           )}
