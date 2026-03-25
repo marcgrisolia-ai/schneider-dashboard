@@ -64,27 +64,28 @@ export default function App() {
     <div 
       className="min-h-screen p-6 md:p-12"
       style={{ 
-        background: '#06C75A',
+        background: splitView ? '#FFFFFF' : '#06C75A',
         fontFamily: 'Manrope, sans-serif'
       }}
     >
       <div className={`${splitView ? 'max-w-[1180px]' : 'max-w-[1600px]'} mx-auto`}>
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 
-            className="text-[28px] md:text-[40px] font-bold text-white mb-2 uppercase"
-            style={{ 
-              fontFamily: 'Sora, sans-serif',
-              letterSpacing: '0.02em',
-              lineHeight: '1.1',
-              opacity: getTitleProgress(progress) * sceneOpacity,
-              transform: `translateY(${(1 - getTitleProgress(progress)) * 18 + sceneY * 0.35}px) scale(${0.96 + getTitleProgress(progress) * 0.04})`,
-              transformOrigin: 'center center',
-            }}
-          >
-            Global Certification Coverage by Body
-          </h1>
-        </div>
+        {!splitView && (
+          <div className="mb-8 text-center">
+            <h1 
+              className="text-[28px] md:text-[40px] font-bold text-white mb-2 uppercase"
+              style={{ 
+                fontFamily: 'Sora, sans-serif',
+                letterSpacing: '0.02em',
+                lineHeight: '1.1',
+                opacity: getTitleProgress(progress) * sceneOpacity,
+                transform: `translateY(${(1 - getTitleProgress(progress)) * 18 + sceneY * 0.35}px) scale(${0.96 + getTitleProgress(progress) * 0.04})`,
+                transformOrigin: 'center center',
+              }}
+            >
+              Global Certification Coverage by Body
+            </h1>
+          </div>
+        )}
 
         <div style={{ opacity: sceneOpacity, transform: `translateY(${sceneY}px) scale(${sceneScale})`, transformOrigin: 'center top' }}>
           {!splitView && (
@@ -144,12 +145,18 @@ export default function App() {
             </div>
           )}
           {donutOnly && (
-            <div className="max-w-[980px] mx-auto">
+            <div
+              className="max-w-[980px] mx-auto rounded-2xl border border-[#DDE7DE] shadow-[0_8px_24px_rgba(17,24,39,0.08)] p-3 md:p-4"
+              style={{ background: '#FFFFFF' }}
+            >
               <DonutChart data={certificationData} progress={progress} />
             </div>
           )}
           {barsOnly && (
-            <div className="max-w-[980px] mx-auto">
+            <div
+              className="max-w-[980px] mx-auto rounded-2xl border border-[#DDE7DE] shadow-[0_8px_24px_rgba(17,24,39,0.08)] p-3 md:p-4"
+              style={{ background: '#FFFFFF' }}
+            >
               <HorizontalBarChart data={certificationData} progress={progress} />
             </div>
           )}
